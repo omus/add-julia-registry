@@ -11,6 +11,9 @@ inputs:
   ssh-key:
     description: SSH private key contents when cloning with SSH.
     required: false
+  key:
+    description: Deprecated input which was replaced by `ssh-key`.
+    required: false
   github-token:
     description: The GitHub token to use when cloning with HTTPS.
     default: ${{ github.token }}

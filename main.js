@@ -84,7 +84,7 @@ async function configureGitInsteadOfHttps(github_token) {
 async function main() {
   const registry = core.getInput("registry", { required: true });
   const protocol = core.getInput("protocol", { required: true });
-  const ssh_key = core.getInput("ssh-key", { required: protocol == "ssh" });
+  const ssh_key = core.getInput("ssh-key", { required: protocol == "ssh" }) || core.getInput("key", { required: protocol == "ssh" });
   const github_token = core.getInput("github-token", { required: protocol == "https" });
 
   if (protocol === "ssh") {

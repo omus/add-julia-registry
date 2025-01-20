@@ -84,7 +84,14 @@ async function configureGitInsteadOfHttps(github_token) {
 async function main() {
   const registry = core.getInput("registry", { required: true });
   const protocol = core.getInput("protocol", { required: true });
-  const ssh_key = core.getInput("ssh-key", { required: protocol == "ssh" }) || core.getInput("key", { required: protocol == "ssh" });
+
+  // While we support the deprecated `key` input we need to roll our own `required: protocol == "ssh"`
+  // const ssh_key = core.getInput("ssh-key", { required: protocol == "ssh" });
+  const ssh_key = core.getInput("ssh-key") || core.getInput("key");
+  if (protocol == "ssh" && !ssh_key) {
+    throw new Error("Input required and not supplied: ssh-key");
+  }
+
   const github_token = core.getInput("github-token", { required: protocol == "https" });
 
   if (protocol === "ssh") {

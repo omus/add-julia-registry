@@ -18,7 +18,7 @@ jobs:
         with:
           version: "1"
       - uses: julia-actions/cache@v2
-      - uses: julia-actions/add-julia-registry@v3
+      - uses: julia-actions/add-julia-registry@v2
         with:
           registry: MyOrg/MyRegistry
           ssh-key: ${{ secrets.SSH_KEY }}
@@ -44,7 +44,7 @@ jobs:
         with:
           version: "1"
       - uses: julia-actions/cache@v2
-      - uses: julia-actions/add-julia-registry@v3
+      - uses: julia-actions/add-julia-registry@v2
         with:
           registry: MyOrg/MyRegistry
           protocol: https

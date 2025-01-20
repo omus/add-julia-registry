@@ -88,7 +88,7 @@ async function main() {
   // While we support the deprecated `key` input we need to roll our own `required: protocol == "ssh"`
   // const ssh_key = core.getInput("ssh-key", { required: protocol == "ssh" });
   const ssh_key = core.getInput("ssh-key") || core.getInput("key");
-  if (protocol == "ssh" && !ssh_key) {
+  if (protocol === "ssh" && !ssh_key) {
     throw new Error("Input required and not supplied: ssh-key");
   }
 
